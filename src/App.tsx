@@ -27,52 +27,83 @@ function App() {
         document.documentElement.scrollHeight - window.innerHeight;
 
       const progress =
-        scrollable > 0 ? (window.scrollY / scrollable) * 100 : 0;
+        scrollable > 0
+          ? (window.scrollY / scrollable) * 100
+          : 0;
 
       setScrollProgress(progress);
     };
 
     updateProgress();
-    window.addEventListener("scroll", updateProgress, { passive: true });
+    window.addEventListener("scroll", updateProgress, {
+      passive: true,
+    });
 
-    return () => window.removeEventListener("scroll", updateProgress);
+    return () =>
+      window.removeEventListener("scroll", updateProgress);
   }, []);
 
   const closeMenu = () => setMenuOpen(false);
 
   return (
     <>
-      {!introDone && <IntroLoader onComplete={handleIntroComplete} />}
+      {!introDone && (
+        <IntroLoader onComplete={handleIntroComplete} />
+      )}
 
       <div
         className="scroll-progress"
-        style={{ transform: `scaleX(${scrollProgress / 100})` }}
+        style={{
+          transform: `scaleX(${scrollProgress / 100})`,
+        }}
       />
 
-      <main className={`portfolio ${introDone ? "portfolio-ready" : ""}`}>
+      <main
+        className={`portfolio ${
+          introDone ? "portfolio-ready" : ""
+        }`}
+      >
         <nav className="navbar">
-          <a className="brand" href="#home" onClick={closeMenu}>
+          <a
+            className="brand"
+            href="#home"
+            onClick={closeMenu}
+          >
             JOHNSON<span>.</span>
           </a>
 
-          <span className="nav-role">FRONTEND DEVELOPER</span>
+          <span className="nav-role">
+            FRONTEND DEVELOPER
+          </span>
 
           <button
             className="menu-toggle"
             type="button"
-            aria-label={menuOpen ? "Close navigation" : "Open navigation"}
+            aria-label={
+              menuOpen ? "Close navigation" : "Open navigation"
+            }
             aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((open) => !open)}
+            onClick={() =>
+              setMenuOpen((open) => !open)
+            }
           >
             {menuOpen ? "✕" : "☰"}
           </button>
 
-          <div className={`nav-links ${menuOpen ? "nav-open" : ""}`}>
+          <div
+            className={`nav-links ${
+              menuOpen ? "nav-open" : ""
+            }`}
+          >
             <a href="#about" onClick={closeMenu}>About</a>
             <a href="#skills" onClick={closeMenu}>Skills</a>
             <a href="#experience" onClick={closeMenu}>Experience</a>
             <a href="#projects" onClick={closeMenu}>Work</a>
-            <a className="nav-contact" href="#contact" onClick={closeMenu}>
+            <a
+              className="nav-contact"
+              href="#contact"
+              onClick={closeMenu}
+            >
               Let's talk ↗
             </a>
           </div>
@@ -83,60 +114,30 @@ function App() {
           <div className="hero-grid" />
 
           <div className="hero-copy">
-            <div className="availability">
-              <span className="availability-dot" />
-              FRONTEND DEVELOPER · CHENNAI, INDIA
-            </div>
-
-            <p className="subtitle">
-              JAVASCRIPT · REACT · TYPESCRIPT
-            </p>
-
+            
             <h1>
-              Building
-              <br />
-              <span>Digital.</span>
+              Johnson <span>S</span>
               <i className="hero-heading-dot">✳</i>
             </h1>
 
+            <h2 className="subheading">
+              Frontend Developer
+            </h2>
             <p className="description">
-              Creating scalable, interactive and high-performance
-              web experiences with React, Angular and TypeScript.
+              I build clean, responsive web experiences with JavaScript, React and TypeScript.
             </p>
-
-            <div className="hero-tech">
-              <span>React</span>
-              <span>JavaScript</span>
-              <span>TypeScript</span>
-              <span>Enterprise UI</span>
-            </div>
           </div>
 
           <div className="scene-container">
             <div className="scene-aura" />
-            {/* <div className="scene-label scene-label-top">
-              <span>✦</span> INTERACTIVE 3D
-            </div> */}
-
-            <div className="floating-tech floating-tech-react">
-              <span>⚛</span> React
-            </div>
-            <div className="floating-tech floating-tech-js">
-              <span>JS</span> JavaScript
-            </div>
-            <div className="floating-tech floating-tech-ts">
-              <span>TS</span> TypeScript
-            </div>
-
             <Scene />
-
-            {/* <div className="scene-label scene-label-bottom">
-              MOUSE-TRACKING CHARACTER <span>↗</span>
-            </div> */}
           </div>
 
           <div className="hero-actions">
-            <a className="primary-button" href="#projects">
+            <a
+              className="primary-button"
+              href="#projects"
+            >
               Explore My Work <span>↗</span>
             </a>
 
@@ -148,12 +149,6 @@ function App() {
             >
               Download Resume <span>↓</span>
             </a>
-          </div>
-
-          <div className="hero-bottom">
-            <span>DESIGNING · DEVELOPING · IMPROVING</span>
-            <a href="#about">SCROLL TO EXPLORE ↓</a>
-            <span>01 — 07</span>
           </div>
         </section>
 

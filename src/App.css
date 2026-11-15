@@ -178,7 +178,7 @@ button {
   grid-template-rows: 1fr auto;
   align-items: center;
 
-  padding: 65px 7% 70px;
+  padding: 0 7% 70px;
 
   background:
     radial-gradient(
@@ -246,6 +246,12 @@ button {
   animation: heroEnter 1s ease both;
 }
 
+@media (min-width: 761px) {
+  .hero-copy {
+    text-align: left;
+  }
+}
+
 @keyframes heroEnter {
   from {
     opacity: 0;
@@ -301,7 +307,7 @@ button {
 .hero h1 {
   position: relative;
   color: #282237;
-  font-family: "Space Grotesk", sans-serif;
+  font-family: cursive;
   font-size: clamp(68px, 8vw, 112px);
   font-weight: 700;
   line-height: 0.91;
@@ -309,6 +315,7 @@ button {
 }
 
 .hero h1 > span {
+  width: 15%;
   display: inline-block;
   background: linear-gradient(115deg, #8e6bdc, #b49af4 65%, #8061cb);
   background-clip: text;
@@ -326,6 +333,14 @@ button {
   animation: rotateStar 12s linear infinite;
 }
 
+.subheading {
+  margin-right: auto;
+  color: #8e64c1;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 2px;
+}
+
 @keyframes rotateStar {
   to {
     transform: rotate(360deg);
@@ -333,7 +348,6 @@ button {
 }
 
 .description {
-  max-width: 430px;
   margin-top: 28px;
   color: #777181;
   font-size: 15px;
@@ -521,6 +535,7 @@ button {
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  flex: fit-content;
   gap: 20px;
 
   min-height: 51px;

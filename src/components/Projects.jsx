@@ -1,6 +1,24 @@
 
 import React, { useMemo, useState } from "react";
+import { motion } from "framer-motion";
+import {
+  PanelsTopLeft,
+  Code2,
+  Database,
+  SlidersHorizontal,
+  Bug,
+  ArrowUpRight,
+  Sparkles,
+  FileText,
+  Keyboard,
+  Volume2,
+} from "lucide-react";
+
 import "./Projects.css";
+
+/* =========================================
+   DATA
+========================================= */
 
 const orders = [
   { name: "Paul Henriot", id: "10248", country: "France", city: "Reims" },
@@ -68,65 +86,157 @@ const features = [
     category: "PERSONAL PROJECT",
     title: "TypeSpeak – Typing Speed Game",
     description:
-      "Built a browser-based typing practice application that helps users improve typing speed and accuracy with real-time performance tracking, voice feedback, and flexible practice options.",
-    tags: [
-      "Typing Practice",
-      "Voice Feedback",
-      "PDF & TXT Support",
-      "Responsive UI",
-    ],
+      "A browser-based typing practice application with random paragraphs, real-time WPM and accuracy tracking, voice feedback, customizable practice modes, and document-based typing practice.",
+    tags: ["JavaScript", "Typing Practice", "Voice Feedback", "PDF & TXT"],
     preview: "typespeak",
     link: "https://lnkd.in/giDtnaQN",
+    featured: true,
   },
 ];
 
+/* =========================================
+   TECHNOLOGY ICONS
+========================================= */
 
-function TypeSpeakPreview() {
-  return (
-    <div className="preview-window typespeak-preview">
-      <div className="preview-toolbar">
-        <span>TypeSpeak · Typing Practice</span>
-        <span className="preview-status">Ready to practice</span>
-      </div>
+const techIcons = {
+  JavaScript: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  TypeScript: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  React: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  Angular: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+  },
+  HTML: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  },
+  CSS: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  },
+  Git: {
+    type: "image",
+    src: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
+  DataGrid: {
+    type: "lucide",
+    icon: PanelsTopLeft,
+  },
+  Templates: {
+    type: "lucide",
+    icon: Code2,
+  },
+  "UI Customization": {
+    type: "lucide",
+    icon: SlidersHorizontal,
+  },
+  "UI Logic": {
+    type: "lucide",
+    icon: Database,
+  },
+  Interaction: {
+    type: "lucide",
+    icon: SlidersHorizontal,
+  },
+  Typography: {
+    type: "lucide",
+    icon: FileText,
+  },
+  "UI Refinement": {
+    type: "lucide",
+    icon: Sparkles,
+  },
+  Debugging: {
+    type: "lucide",
+    icon: Bug,
+  },
+  "Problem Solving": {
+    type: "lucide",
+    icon: Code2,
+  },
+  "Typing Practice": {
+    type: "lucide",
+    icon: Keyboard,
+  },
+  "Voice Feedback": {
+    type: "lucide",
+    icon: Volume2,
+  },
+  "PDF & TXT": {
+    type: "lucide",
+    icon: FileText,
+  },
+};
 
-      <div className="typespeak-content">
-        <div className="typespeak-top">
-          <div>
-            <span className="typespeak-label">YOUR PERFORMANCE</span>
-            <strong className="typespeak-wpm">72 <small>WPM</small></strong>
-          </div>
-          <span className="typespeak-timer">01:00</span>
-        </div>
+/* =========================================
+   FRAMER MOTION VARIANTS
+========================================= */
 
-        <div className="typespeak-stats">
-          <div>
-            <strong>98%</strong>
-            <span>Accuracy</span>
-          </div>
-          <div>
-            <strong>02</strong>
-            <span>Errors</span>
-          </div>
-          <div>
-            <strong>345</strong>
-            <span>Characters</span>
-          </div>
-        </div>
+const containerVariants = {
+  hidden: {},
+  visible: {
+    transition: {
+      staggerChildren: 0.12,
+    },
+  },
+};
 
-        <div className="typespeak-paragraph">
-          The quick brown fox jumps over the lazy dog.
-          Practice every day to improve your typing speed
-          and accuracy.
-        </div>
+const cardVariants = {
+  hidden: {
+    opacity: 0,
+    y: 40,
+    scale: 0.96,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      duration: 0.65,
+      ease: [0.22, 1, 0.36, 1],
+    },
+  },
+};
 
-        <div className="typespeak-bottom">
-          <span>🔊 Voice feedback enabled</span>
-          <span>60-second mode</span>
-        </div>
-      </div>
-    </div>
-  );
+/* =========================================
+   TECHNOLOGY ICON COMPONENT
+========================================= */
+
+function TechIcon({ name }) {
+  const item = techIcons[name];
+
+  if (!item) {
+    return <Code2 size={15} strokeWidth={1.8} />;
+  }
+
+  if (item.type === "image") {
+    return (
+      <img
+        src={item.src}
+        alt=""
+        className="project-tech-icon"
+        loading="lazy"
+      />
+    );
+  }
+
+  const Icon = item.icon;
+
+  return <Icon size={15} strokeWidth={1.8} />;
 }
+
+/* =========================================
+   PREVIEW 01 — EMPTY RECORD
+========================================= */
 
 function EmptyPreview() {
   return (
@@ -135,10 +245,15 @@ function EmptyPreview() {
         <span>Orders DataGrid</span>
         <span className="preview-muted">0 records</span>
       </div>
+
       <div className="empty-preview-content">
-        <div className="empty-preview-icon">▤</div>
+        <div className="empty-preview-icon">
+          <Database size={20} />
+        </div>
+
         <strong>No Records Found</strong>
         <span>There is no data available to display.</span>
+
         <button type="button" className="preview-small-button">
           Refresh data
         </button>
@@ -147,8 +262,13 @@ function EmptyPreview() {
   );
 }
 
+/* =========================================
+   PREVIEW 02 — COLUMN CHOOSER
+========================================= */
+
 function ChooserPreview() {
   const [search, setSearch] = useState("");
+
   const [selected, setSelected] = useState([
     "Order ID",
     "Customer Name",
@@ -182,6 +302,7 @@ function ChooserPreview() {
         <span>Column Chooser</span>
         <span className="preview-status">Custom template</span>
       </div>
+
       <div className="chooser-preview">
         <input
           className="preview-search"
@@ -189,6 +310,7 @@ function ChooserPreview() {
           value={search}
           onChange={(event) => setSearch(event.target.value)}
         />
+
         <div className="chooser-list">
           {filtered.map((column) => (
             <label key={column} className="chooser-option">
@@ -200,10 +322,14 @@ function ChooserPreview() {
               <span>{column}</span>
             </label>
           ))}
+
           {filtered.length === 0 && (
-            <span className="preview-muted">No matching columns</span>
+            <span className="preview-muted">
+              No matching columns
+            </span>
           )}
         </div>
+
         <div className="chooser-footer">
           <span>{selected.length} selected</span>
           <span className="preview-apply">Apply</span>
@@ -212,6 +338,10 @@ function ChooserPreview() {
     </div>
   );
 }
+
+/* =========================================
+   PREVIEW 03 — COLUMN VISIBILITY
+========================================= */
 
 function VisibilityPreview() {
   const [visible, setVisible] = useState([
@@ -236,6 +366,7 @@ function VisibilityPreview() {
         <span>Grid Preferences</span>
         <span className="preview-status">Live preview</span>
       </div>
+
       <div className="visibility-preview">
         <div className="visibility-controls">
           {columns.map((column) => (
@@ -249,12 +380,14 @@ function VisibilityPreview() {
             </label>
           ))}
         </div>
+
         <div className="mini-grid">
           <div className="mini-grid-row mini-grid-head">
             {visible.map((column) => (
               <span key={column}>{column}</span>
             ))}
           </div>
+
           <div className="mini-grid-row">
             {visible.map((column) => (
               <span key={column}>
@@ -271,6 +404,10 @@ function VisibilityPreview() {
     </div>
   );
 }
+
+/* =========================================
+   PREVIEW 04 — SORTING
+========================================= */
 
 function SortingPreview() {
   const [ascending, setAscending] = useState(true);
@@ -291,6 +428,7 @@ function SortingPreview() {
         <span>Customer Orders</span>
         <span className="preview-status">Sortable columns</span>
       </div>
+
       <div className="sorting-preview">
         <button
           type="button"
@@ -300,7 +438,11 @@ function SortingPreview() {
           Customer Name
           <span>{ascending ? "↑" : "↓"}</span>
         </button>
-        <div className="sort-hint">Click the header to change sorting</div>
+
+        <div className="sort-hint">
+          Click the header to change sorting
+        </div>
+
         {sortedOrders.map((order) => (
           <div className="sort-row" key={order.id}>
             <span>{order.name}</span>
@@ -312,6 +454,10 @@ function SortingPreview() {
   );
 }
 
+/* =========================================
+   PREVIEW 05 — HEADER REFINEMENT
+========================================= */
+
 function HeaderPreview() {
   return (
     <div className="preview-window">
@@ -319,20 +465,24 @@ function HeaderPreview() {
         <span>DataGrid Header</span>
         <span className="preview-status">UI refinement</span>
       </div>
+
       <div className="header-preview-grid">
         <div className="header-preview-cell">
           <span>Order ID</span>
           <span className="header-icons">↕ ⋮</span>
         </div>
+
         <div className="header-preview-cell">
           <span>Customer Name</span>
           <span className="header-icons">↕ ⋮</span>
         </div>
+
         <div className="header-preview-cell">
           <span>Ship Country</span>
           <span className="header-icons">↕ ⋮</span>
         </div>
       </div>
+
       <div className="header-preview-note">
         <span className="alignment-dot" />
         Consistent alignment · Clear typography
@@ -341,6 +491,10 @@ function HeaderPreview() {
   );
 }
 
+/* =========================================
+   PREVIEW 06 — DEBUGGING
+========================================= */
+
 function DebugPreview() {
   const [fixed, setFixed] = useState(false);
 
@@ -348,20 +502,28 @@ function DebugPreview() {
     <div className="preview-window">
       <div className="preview-toolbar">
         <span>UI Issue Investigation</span>
+
         <span className={fixed ? "preview-status" : "preview-warning"}>
           {fixed ? "Resolved" : "Issue detected"}
         </span>
       </div>
+
       <div className="debug-preview">
         <div className="debug-code-line">
-          <span>01</span> Inspect component behavior
+          <span>01</span>
+          Inspect component behavior
         </div>
+
         <div className="debug-code-line">
-          <span>02</span> Identify UI inconsistency
+          <span>02</span>
+          Identify UI inconsistency
         </div>
+
         <div className="debug-code-line">
-          <span>03</span> Apply and verify the fix
+          <span>03</span>
+          Apply and verify the fix
         </div>
+
         <button
           type="button"
           className="debug-action"
@@ -374,91 +536,204 @@ function DebugPreview() {
   );
 }
 
+/* =========================================
+   PREVIEW 07 — TYPESPEAK
+========================================= */
+
+function TypeSpeakPreview() {
+  return (
+    <div className="preview-window typespeak-preview">
+      <div className="preview-toolbar">
+        <span>TypeSpeak · Typing Practice</span>
+        <span className="preview-status">Ready to practice</span>
+      </div>
+
+      <div className="typespeak-content">
+        <div className="typespeak-top">
+          <div>
+            <span className="typespeak-label">
+              YOUR PERFORMANCE
+            </span>
+
+            <strong className="typespeak-wpm">
+              72 <small>WPM</small>
+            </strong>
+          </div>
+
+          <span className="typespeak-timer">01:00</span>
+        </div>
+
+        <div className="typespeak-stats">
+          <div>
+            <strong>98%</strong>
+            <span>Accuracy</span>
+          </div>
+
+          <div>
+            <strong>02</strong>
+            <span>Errors</span>
+          </div>
+
+          <div>
+            <strong>345</strong>
+            <span>Characters</span>
+          </div>
+        </div>
+
+        <div className="typespeak-paragraph">
+          The quick brown fox jumps over the lazy dog.
+          Practice every day to improve your typing speed
+          and accuracy.
+        </div>
+
+        <div className="typespeak-bottom">
+          <span>
+            <Volume2 size={13} />
+            Voice feedback enabled
+          </span>
+
+          <span>60-second mode</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+/* =========================================
+   PREVIEW ROUTER
+========================================= */
 
 function FeaturePreview({ type }) {
   switch (type) {
     case "empty":
       return <EmptyPreview />;
+
     case "chooser":
       return <ChooserPreview />;
+
     case "visibility":
       return <VisibilityPreview />;
+
     case "sorting":
       return <SortingPreview />;
+
     case "header":
       return <HeaderPreview />;
+
     case "debug":
       return <DebugPreview />;
+
     case "typespeak":
       return <TypeSpeakPreview />;
+
     default:
       return null;
   }
 }
 
+/* =========================================
+   PROJECTS COMPONENT
+========================================= */
 
 export default function Projects() {
   return (
     <section className="projects-section" id="projects">
       <div className="projects-container">
-        <div className="projects-heading reveal">
-          <span className="section-eyebrow">04 / SELECTED WORK</span>
+
+        {/* Heading */}
+        <motion.div
+          className="projects-heading"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.7 }}
+        >
+          <span className="section-eyebrow">
+            04 / SELECTED WORK
+          </span>
+
           <h2>
             Engineering details
             <br />
             behind the <span>interface.</span>
           </h2>
-          <p>
-            A collection of frontend engineering contributions and personal
-            projects focused on usability, interaction, and meaningful
-            digital experiences.
-          </p>
-        </div>
 
-        <div className="projects-grid">
+          <p>
+            A collection of frontend engineering contributions
+            and personal projects focused on usability,
+            interaction, and meaningful digital experiences.
+          </p>
+        </motion.div>
+
+        {/* Project Cards */}
+        <motion.div
+          className="projects-grid"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.06 }}
+        >
           {features.map((feature) => (
-              <article
-                className={`project-card reveal ${
-                  feature.preview === "typespeak" ? "project-card-featured" : ""
-                }`}
-                key={feature.number}
-              >
+            <motion.article
+              className={`project-card ${
+                feature.featured ? "project-card-featured" : ""
+              }`}
+              key={feature.number}
+              variants={cardVariants}
+              whileHover={{
+                y: -8,
+                transition: { duration: 0.25 },
+              }}
+            >
               <div className="project-card-top">
-                <span className="project-number">{feature.number}</span>
-                <span className="project-category">{feature.category}</span>
+                <span className="project-number">
+                  {feature.number}
+                </span>
+
+                <span className="project-category">
+                  {feature.category}
+                </span>
               </div>
 
               <FeaturePreview type={feature.preview} />
 
               <div className="project-card-content">
                 <h3>{feature.title}</h3>
+
                 <p>{feature.description}</p>
 
                 <div className="project-tags">
                   {feature.tags.map((tag) => (
-                    <span key={tag}>{tag}</span>
+                    <span className="project-tech" key={tag}>
+                      <TechIcon name={tag} />
+                      {tag}
+                    </span>
                   ))}
-                  {feature.link && (
-                    <a
-                      href={feature.link}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="project-live-link"
-                    >
-                      Try TypeSpeak
-                      <span>↗</span>
-                    </a>
-                  )}
                 </div>
-              </div>
-            </article>
-          ))}
-        </div>
 
-        <div className="projects-footer reveal">
-          <span>FROM COMPONENT ENGINEERING TO PERSONAL PRODUCTS</span>
-          <span>BUILD · EXPLORE · IMPROVE</span>
-        </div>
+                {feature.link && (
+                  <a
+                    href={feature.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="project-live-link"
+                  >
+                    Try TypeSpeak
+                    <ArrowUpRight size={16} />
+                  </a>
+                )}
+              </div>
+
+              {feature.featured && (
+                <span className="featured-label">
+                  FEATURED PROJECT
+                  <Sparkles size={13} />
+                </span>
+              )}
+            </motion.article>
+          ))}
+        </motion.div>
+
       </div>
     </section>
   );

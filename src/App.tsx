@@ -64,12 +64,10 @@ function App() {
         }`}
       >
         <nav className="navbar">
-          <a
-            className="brand"
-            href="#home"
-            onClick={closeMenu}
-          >
-            JOHNSON<span>.</span>
+          <a href="#home" className="navbar-brand">
+            <span className="brand-monogram">
+              J &nbsp; <span> </span> S
+            </span>
           </a>
 
           <span className="nav-role">

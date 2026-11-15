@@ -711,9 +711,55 @@ button {
   }
 }
 
+.navbar-brand {
+  display: inline-flex;
+  align-items: center;
+  text-decoration: none;
+}
+
+.brand-monogram {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border: 2px solid #8968d0;
+  border-radius: 15px;
+  color: #8968d0;
+  font-size: 19px;
+  font-weight: 850;
+  letter-spacing: -2px;
+  transition: all 0.3s ease;
+}
+
+.brand-monogram span {
+  color: #b49ae8;
+}
+
+.navbar-brand:hover .brand-monogram {
+  background: #8968d0;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(137, 104, 208, 0.2);
+}
+
+.navbar-brand:hover .brand-monogram span {
+  color: #e4d8ff;
+}
+
+
 /* ========================================
    MOBILE NAVIGATION
 ======================================== */
+
+@media (max-width: 600px) {
+  .brand-monogram {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 17px;
+  }
+}
 
 @media (max-width: 760px) {
   .navbar {

@@ -999,6 +999,107 @@ button {
   }
 }
 
+/* Card-style hover treatment for buttons and button-like links */
+.portfolio :is(
+  button,
+  .primary-button,
+  .secondary-button,
+  .nav-contact,
+  .project-live-link,
+  .contact-email-button,
+  .contact-link-card
+) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  box-shadow:
+    0 10px 30px rgba(70, 45, 115, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s ease,
+    border-color 0.35s ease;
+}
+
+.portfolio :is(
+  button,
+  .primary-button,
+  .secondary-button,
+  .nav-contact,
+  .project-live-link,
+  .contact-email-button,
+  .contact-link-card,
+  .skill-card,
+  .project-card,
+  .experience-card,
+  .education-card,
+  .contact-main-card
+)::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -100%;
+  left: -60%;
+  width: 45%;
+  height: 300%;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.38),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: left 0.8s ease, opacity 0.4s ease;
+}
+
+.portfolio :is(
+  button,
+  .primary-button,
+  .secondary-button,
+  .nav-contact,
+  .project-live-link,
+  .contact-email-button,
+  .contact-link-card
+):hover {
+  transform: translateY(-9px) scale(1.012);
+  border-color: rgba(146, 114, 232, 0.38);
+  box-shadow:
+    0 24px 55px rgba(93, 66, 145, 0.13),
+    0 0 0 1px rgba(146, 114, 232, 0.05);
+}
+
+.portfolio :is(
+  button,
+  .primary-button,
+  .secondary-button,
+  .nav-contact,
+  .project-live-link,
+  .contact-email-button,
+  .contact-link-card,
+  .skill-card,
+  .project-card,
+  .experience-card,
+  .education-card,
+  .contact-main-card
+):hover::after {
+  left: 130%;
+  opacity: 1;
+}
+
+.portfolio :is(
+  .skill-card,
+  .project-card,
+  .experience-card,
+  .education-card,
+  .contact-main-card
+) {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+}
+
 /* ========================================
    ACCESSIBILITY
 ======================================== */

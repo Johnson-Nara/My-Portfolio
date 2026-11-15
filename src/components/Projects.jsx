@@ -89,7 +89,7 @@ const features = [
       "A browser-based typing practice application with random paragraphs, real-time WPM and accuracy tracking, voice feedback, customizable practice modes, and document-based typing practice.",
     tags: ["JavaScript", "Typing Practice", "Voice Feedback", "PDF & TXT"],
     preview: "typespeak",
-    link: "https://lnkd.in/giDtnaQN",
+    link: "https://typespeak.lovable.app/",
     featured: true,
   },
 ];

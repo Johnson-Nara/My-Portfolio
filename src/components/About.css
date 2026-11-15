@@ -41,7 +41,7 @@
 
 .about-eyebrow,
 .card-label {
-  font-size: 10px;
+  font-size: 18px;
   font-weight: 600;
   letter-spacing: 3px;
   color: var(--about-purple);
@@ -355,6 +355,7 @@
 }
 
 .tech-header {
+  text-align: left;
   display: flex;
   justify-content: space-between;
   align-items: center;

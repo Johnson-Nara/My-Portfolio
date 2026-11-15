@@ -13,14 +13,14 @@ import "./Contact.css";
 const contactLinks = [
   {
     label: "EMAIL",
-    value: "your.email@example.com",
-    href: "mailto:your.email@example.com",
+    value: "sjohnson.nara@gmail.com",
+    href: "mailto:sjohnson.nara@gmail.com",
     icon: Mail,
   },
   {
     label: "LINKEDIN",
     value: "Connect professionally",
-    href: "https://www.linkedin.com/in/your-linkedin-username/",
+    href: "https://www.linkedin.com/in/johnson-s-26a3382b1/",
     icon: BriefcaseBusiness,
   },
   {
@@ -85,7 +85,7 @@ export default function Contact() {
             </p>
 
             <a
-              href="mailto:your.email@example.com"
+              href="mailto:sjohnson.nara@gmail.com"
               className="contact-email-button"
             >
               Get in touch

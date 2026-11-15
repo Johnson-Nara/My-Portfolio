@@ -87,7 +87,7 @@ function About() {
             <div className="profile-orbit"></div>
 
             <img
-              src="/images/profile.png"
+              src={`${import.meta.env.BASE_URL}images/profile.png`}
               alt="Johnson - Frontend Developer"
               className="profile-image"
             />

@@ -5,7 +5,8 @@ import { useGLTF } from "@react-three/drei";
 import * as THREE from "three";
 
 export default function GhostModel() {
-  const { scene } = useGLTF("/models/ghost.glb");
+  const modelPath = `${import.meta.env.BASE_URL}models/ghost.glb`;
+  const { scene } = useGLTF(modelPath);
 
   const ghostRef = useRef<THREE.Group>(null);
 
@@ -45,4 +46,4 @@ export default function GhostModel() {
   );
 }
 
-useGLTF.preload("/models/ghost.glb");
+useGLTF.preload(`${import.meta.env.BASE_URL}models/ghost.glb`);

@@ -106,29 +106,27 @@ function About() {
 
         {/* INTRODUCTION CARD */}
         <article className="about-card about-intro">
-
           <span className="card-label">
             HELLO, I'M JOHNSON
           </span>
 
           <h3>
             I turn ideas into
-            <span> interactive </span>
+            <span> meaningful </span>
             digital experiences.
           </h3>
 
           <p>
-            I'm a Frontend Developer passionate about
-            creating scalable, interactive and
-            user-friendly web applications.
+            I'm a Frontend Developer focused on building
+            responsive, intuitive and user-friendly web applications.
 
-            With 3+ years of JavaScript development
-            experience, I work with modern frontend
-            technologies and UI component development.
+            With experience in JavaScript, TypeScript, React,
+            Angular and Syncfusion UI components, I enjoy
+            solving complex UI challenges and creating
+            reliable frontend experiences.
           </p>
 
           <div className="intro-decoration">“</div>
-
         </article>
 
         {/* EXPERIENCE CARD */}
@@ -142,7 +140,7 @@ function About() {
             4<span>+</span>
           </div>
 
-          <h4>Years of JavaScript</h4>
+          <h4>Years in Frontend Development</h4>
 
           <p>
             Building and improving frontend
@@ -164,12 +162,11 @@ function About() {
 
           <div className="specialty-icon">✦</div>
 
-          <h3>Frontend & UI Development</h3>
+          <h3>Frontend Engineering</h3>
 
           <p>
-            Building reusable components,
-            responsive interfaces and
-            interactive web experiences.
+            Developing reusable UI components, responsive
+            layouts and interactive web applications.
           </p>
 
           <span className="specialty-decoration">✧</span>
@@ -195,9 +192,7 @@ function About() {
             {technologies.map((tech) => (
               <button
                 key={tech}
-                className={`tech-item ${
-                  activeTech === tech ? "active" : ""
-                }`}
+                className={`tech-item ${activeTech === tech ? "active" : ""}`}
                 onMouseEnter={() => setActiveTech(tech)}
                 onFocus={() => setActiveTech(tech)}
                 onClick={() => setActiveTech(tech)}

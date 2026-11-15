@@ -142,10 +142,17 @@ function App() {
             </a>
 
             <a
-              className="secondary-button"
-              href="/resume.pdf"
+              className="primary-button"
+              href={`${import.meta.env.BASE_URL}resume/Johnson-Front-End-Developer.pdf`}
               target="_blank"
-              rel="noreferrer"
+              rel="noopener noreferrer"
+            >
+              View Resume <span>↗</span>
+            </a>
+            <a
+              className="secondary-button"
+              href={`${import.meta.env.BASE_URL}resume/Johnson-Front-End-Developer.pdf`}
+              download="Johnson-Front-End-Developer.pdf"
             >
               Download Resume <span>↓</span>
             </a>

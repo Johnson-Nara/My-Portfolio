@@ -63,7 +63,70 @@ const features = [
     tags: ["Debugging", "JavaScript", "Problem Solving"],
     preview: "debug",
   },
+  {
+    number: "07",
+    category: "PERSONAL PROJECT",
+    title: "TypeSpeak – Typing Speed Game",
+    description:
+      "Built a browser-based typing practice application that helps users improve typing speed and accuracy with real-time performance tracking, voice feedback, and flexible practice options.",
+    tags: [
+      "Typing Practice",
+      "Voice Feedback",
+      "PDF & TXT Support",
+      "Responsive UI",
+    ],
+    preview: "typespeak",
+    link: "https://lnkd.in/giDtnaQN",
+  },
 ];
+
+
+function TypeSpeakPreview() {
+  return (
+    <div className="preview-window typespeak-preview">
+      <div className="preview-toolbar">
+        <span>TypeSpeak · Typing Practice</span>
+        <span className="preview-status">Ready to practice</span>
+      </div>
+
+      <div className="typespeak-content">
+        <div className="typespeak-top">
+          <div>
+            <span className="typespeak-label">YOUR PERFORMANCE</span>
+            <strong className="typespeak-wpm">72 <small>WPM</small></strong>
+          </div>
+          <span className="typespeak-timer">01:00</span>
+        </div>
+
+        <div className="typespeak-stats">
+          <div>
+            <strong>98%</strong>
+            <span>Accuracy</span>
+          </div>
+          <div>
+            <strong>02</strong>
+            <span>Errors</span>
+          </div>
+          <div>
+            <strong>345</strong>
+            <span>Characters</span>
+          </div>
+        </div>
+
+        <div className="typespeak-paragraph">
+          The quick brown fox jumps over the lazy dog.
+          Practice every day to improve your typing speed
+          and accuracy.
+        </div>
+
+        <div className="typespeak-bottom">
+          <span>🔊 Voice feedback enabled</span>
+          <span>60-second mode</span>
+        </div>
+      </div>
+    </div>
+  );
+}
 
 function EmptyPreview() {
   return (
@@ -198,8 +261,8 @@ function VisibilityPreview() {
                 {column === "Order ID"
                   ? "10248"
                   : column === "Customer"
-                  ? "Paul"
-                  : "France"}
+                    ? "Paul"
+                    : "France"}
               </span>
             ))}
           </div>
@@ -311,6 +374,7 @@ function DebugPreview() {
   );
 }
 
+
 function FeaturePreview({ type }) {
   switch (type) {
     case "empty":
@@ -325,10 +389,13 @@ function FeaturePreview({ type }) {
       return <HeaderPreview />;
     case "debug":
       return <DebugPreview />;
+    case "typespeak":
+      return <TypeSpeakPreview />;
     default:
       return null;
   }
 }
+
 
 export default function Projects() {
   return (
@@ -342,15 +409,20 @@ export default function Projects() {
             behind the <span>interface.</span>
           </h2>
           <p>
-            A selection of my contributions to Syncfusion DataGrid,
-            focusing on customization, interaction, usability, and
-            visual consistency.
+            A collection of frontend engineering contributions and personal
+            projects focused on usability, interaction, and meaningful
+            digital experiences.
           </p>
         </div>
 
         <div className="projects-grid">
           {features.map((feature) => (
-            <article className="project-card reveal" key={feature.number}>
+              <article
+                className={`project-card reveal ${
+                  feature.preview === "typespeak" ? "project-card-featured" : ""
+                }`}
+                key={feature.number}
+              >
               <div className="project-card-top">
                 <span className="project-number">{feature.number}</span>
                 <span className="project-category">{feature.category}</span>
@@ -366,6 +438,17 @@ export default function Projects() {
                   {feature.tags.map((tag) => (
                     <span key={tag}>{tag}</span>
                   ))}
+                  {feature.link && (
+                    <a
+                      href={feature.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="project-live-link"
+                    >
+                      Try TypeSpeak
+                      <span>↗</span>
+                    </a>
+                  )}
                 </div>
               </div>
             </article>
@@ -373,8 +456,8 @@ export default function Projects() {
         </div>
 
         <div className="projects-footer reveal">
-          <span>CONTINUING TO BUILD BETTER UI EXPERIENCES</span>
-          <span>REACT · JAVASCRIPT · TYPESCRIPT</span>
+          <span>FROM COMPONENT ENGINEERING TO PERSONAL PRODUCTS</span>
+          <span>BUILD · EXPLORE · IMPROVE</span>
         </div>
       </div>
     </section>

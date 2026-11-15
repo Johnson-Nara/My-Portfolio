@@ -1,6 +1,27 @@
 
 import { useEffect, useRef, useState } from "react";
+import {
+  BriefcaseBusiness,
+  ArrowUpRight,
+  Code2,
+  PanelsTopLeft,
+  Bug,
+  Sparkles,
+} from "lucide-react";
 import "./Experience.css";
+
+const techIcons = {
+  JavaScript:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  TypeScript:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  React:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  Angular:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+  Syncfusion:
+    "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dotnetcore/dotnetcore-original.svg",
+};
 
 const experiences = [
   {
@@ -47,7 +68,6 @@ function Experience() {
     );
 
     observer.observe(element);
-
     return () => observer.disconnect();
   }, []);
 
@@ -60,21 +80,17 @@ function Experience() {
       ref={sectionRef}
     >
       <div className="experience-header">
-        <div>
-          <span className="experience-eyebrow">
-            03 / MY JOURNEY
-          </span>
+        <span className="experience-eyebrow">
+          03 / MY JOURNEY
+        </span>
 
-          <h2>
-            Professional
-            <span> experience.</span>
-          </h2>
-        </div>
+        <h2>
+          Professional <span>experience.</span>
+        </h2>
 
         <p>
-          My journey in frontend development,
-          building interfaces and solving
-          real-world UI challenges.
+          My journey in frontend development, building
+          interfaces and solving real-world UI challenges.
         </p>
       </div>
 
@@ -94,6 +110,7 @@ function Experience() {
                 </span>
 
                 <span className="experience-type">
+                  <BriefcaseBusiness size={13} />
                   {item.type}
                 </span>
               </div>
@@ -104,7 +121,9 @@ function Experience() {
                   <h4>{item.company}</h4>
                 </div>
 
-                <span className="experience-arrow">↗</span>
+                <span className="experience-arrow">
+                  <ArrowUpRight size={22} />
+                </span>
               </div>
 
               <p className="experience-description">
@@ -112,7 +131,10 @@ function Experience() {
               </p>
 
               <div className="responsibilities">
-                <h5>KEY CONTRIBUTIONS</h5>
+                <h5>
+                  <Code2 size={15} />
+                  KEY CONTRIBUTIONS
+                </h5>
 
                 <ul>
                   {item.responsibilities.map((task) => (
@@ -126,7 +148,14 @@ function Experience() {
 
               <div className="experience-tech">
                 {item.technologies.map((tech) => (
-                  <span key={tech}>{tech}</span>
+                  <span key={tech}>
+                    <img
+                      src={techIcons[tech]}
+                      alt=""
+                      loading="lazy"
+                    />
+                    {tech}
+                  </span>
                 ))}
               </div>
             </div>
@@ -135,24 +164,17 @@ function Experience() {
       </div>
 
       <div className="experience-note">
-        <div className="experience-note-icon">✳</div>
+        <div className="experience-note-icon">
+          <Sparkles size={23} />
+        </div>
 
         <div>
           <h3>Focused on continuous improvement.</h3>
           <p>
-            I enjoy learning new technologies,
-            improving existing components and
-            creating better user experiences.
+            I enjoy learning new technologies, improving
+            existing components and creating better user experiences.
           </p>
         </div>
-      </div>
-
-      <div className="experience-footer">
-        <span>GROWING THROUGH EVERY PROJECT.</span>
-
-        <a href="#projects">
-          NEXT: FEATURED PROJECTS ↓
-        </a>
       </div>
     </section>
   );

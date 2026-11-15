@@ -1,16 +1,43 @@
 
 import { useEffect, useRef, useState } from "react";
+import {
+  PanelsTopLeft,
+} from "lucide-react";
 import "./About.css";
 
 const technologies = [
-  "JavaScript",
-  "TypeScript",
-  "React",
-  "Angular",
-  "HTML5",
-  "CSS3",
-  "Syncfusion",
-  "Git",
+  {
+    name: "JavaScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg",
+  },
+  {
+    name: "TypeScript",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg",
+  },
+  {
+    name: "React",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg",
+  },
+  {
+    name: "Angular",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/angularjs/angularjs-original.svg",
+  },
+  {
+    name: "HTML5",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg",
+  },
+  {
+    name: "CSS3",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg",
+  },
+  {
+    name: "Syncfusion",
+    icon: null,
+  },
+  {
+    name: "Git",
+    icon: "https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg",
+  },
 ];
 
 function useReveal() {
@@ -32,7 +59,6 @@ function useReveal() {
     );
 
     observer.observe(element);
-
     return () => observer.disconnect();
   }, []);
 
@@ -49,7 +75,6 @@ function About() {
       id="about"
       ref={sectionRef}
     >
-
       {/* SECTION HEADING */}
       <div className="about-header">
         <div>
@@ -74,12 +99,8 @@ function About() {
 
         {/* PROFILE CARD */}
         <article className="about-card about-profile">
-
           <div className="profile-top">
-            <span className="card-label">
-              THE DEVELOPER
-            </span>
-
+            <span className="card-label">THE DEVELOPER</span>
             <span className="profile-star">✳</span>
           </div>
 
@@ -98,15 +119,13 @@ function About() {
               <h3>Johnson S.</h3>
               <p>Frontend Developer</p>
             </div>
-
             <span className="profile-arrow">↗</span>
           </div>
-
         </article>
 
         {/* INTRODUCTION CARD */}
         <article className="about-card about-intro">
-          <span className="card-label">
+          <span className="card-label intro-label">
             HELLO, I'M JOHNSON
           </span>
 
@@ -119,7 +138,6 @@ function About() {
           <p>
             I'm a Frontend Developer focused on building
             responsive, intuitive and user-friendly web applications.
-
             With experience in JavaScript, TypeScript, React,
             Angular and Syncfusion UI components, I enjoy
             solving complex UI challenges and creating
@@ -127,14 +145,12 @@ function About() {
           </p>
 
           <div className="intro-decoration">“</div>
+          <span className="intro-orb"></span>
         </article>
 
         {/* EXPERIENCE CARD */}
         <article className="about-card about-experience">
-
-          <span className="card-label">
-            EXPERIENCE
-          </span>
+          <span className="card-label">EXPERIENCE</span>
 
           <div className="experience-number">
             4<span>+</span>
@@ -150,15 +166,11 @@ function About() {
           <div className="experience-line">
             <span></span>
           </div>
-
         </article>
 
         {/* SPECIALIZATION CARD */}
         <article className="about-card about-specialty">
-
-          <span className="card-label">
-            WHAT I DO
-          </span>
+          <span className="card-label">WHAT I DO</span>
 
           <div className="specialty-icon">✦</div>
 
@@ -170,18 +182,13 @@ function About() {
           </p>
 
           <span className="specialty-decoration">✧</span>
-
         </article>
 
         {/* TECHNOLOGY CARD */}
         <article className="about-card about-tech">
-
           <div className="tech-header">
             <div>
-              <span className="card-label">
-                MY TOOLKIT
-              </span>
-
+              <span className="card-label">MY TOOLKIT</span>
               <h3>Technologies I work with</h3>
             </div>
 
@@ -191,35 +198,49 @@ function About() {
           <div className="tech-list">
             {technologies.map((tech) => (
               <button
-                key={tech}
-                className={`tech-item ${activeTech === tech ? "active" : ""}`}
-                onMouseEnter={() => setActiveTech(tech)}
-                onFocus={() => setActiveTech(tech)}
-                onClick={() => setActiveTech(tech)}
+                key={tech.name}
+                type="button"
+                title={tech.name}
+                aria-label={tech.name}
+                aria-pressed={activeTech === tech.name}
+                className={`tech-item ${
+                  activeTech === tech.name ? "active" : ""
+                }`}
+                onMouseEnter={() => setActiveTech(tech.name)}
+                onFocus={() => setActiveTech(tech.name)}
+                onClick={() => setActiveTech(tech.name)}
               >
-                <span className="tech-dot"></span>
-                {tech}
+                {tech.icon ? (
+                  <img
+                    src={tech.icon}
+                    alt=""
+                    className="tech-logo"
+                    loading="lazy"
+                  />
+                ) : (
+                  <PanelsTopLeft
+                    size={31}
+                    strokeWidth={1.8}
+                    className="syncfusion-icon"
+                  />
+                )}
               </button>
             ))}
           </div>
 
           <div className="tech-footer">
-            <span>CURRENTLY EXPLORING</span>
+            <span>SELECTED TECHNOLOGY</span>
             <strong>{activeTech}</strong>
           </div>
-
         </article>
 
         {/* PERSONALITY CARD */}
         <article className="about-card about-personality">
-
-          <span className="card-label">
-            MY APPROACH
-          </span>
+          <span className="card-label">MY APPROACH</span>
 
           <h3>
             Think.
-            <span> Create.</span>
+            <span> Create. </span>
             Improve.
           </h3>
 
@@ -229,22 +250,10 @@ function About() {
             into meaningful digital products.
           </p>
 
-          <div className="personality-symbol">
-            ✳
-          </div>
-
+          <div className="personality-symbol">✳</div>
         </article>
 
       </div>
-
-      {/* BOTTOM MESSAGE */}
-      <div className="about-footer">
-        <span>THAT'S A LITTLE ABOUT ME.</span>
-        <a href="#skills">
-          NEXT: EXPLORE MY SKILLS ↓
-        </a>
-      </div>
-
     </section>
   );
 }

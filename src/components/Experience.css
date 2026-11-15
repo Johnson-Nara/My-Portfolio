@@ -303,30 +303,6 @@
   line-height: 1.7;
 }
 
-/* FOOTER */
-
-.experience-footer {
-  position: relative;
-  z-index: 1;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 20px;
-  margin-top: 40px;
-  color: #92889f;
-  font-size: 9px;
-  letter-spacing: 2px;
-}
-
-.experience-footer a {
-  color: var(--exp-purple);
-  text-decoration: none;
-  transition: transform 0.3s ease;
-}
-
-.experience-footer a:hover {
-  transform: translateX(5px);
-}
 
 /* TABLET */
 
@@ -412,11 +388,6 @@
     font-size: 15px;
   }
 
-  .experience-footer {
-    flex-direction: column;
-    align-items: flex-start;
-    line-height: 2;
-  }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -434,5 +405,307 @@
 
   .timeline-line {
     transform: scaleY(1);
+  }
+}
+
+
+/* Centered header — matches About and Skills */
+
+.experience-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  margin: 0 auto 55px;
+  text-align: center;
+}
+
+.experience-eyebrow {
+  color: var(--exp-purple);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-align: center;
+}
+
+.experience-header h2 {
+  width: 100%;
+  margin: 15px 0 0;
+  font-size: clamp(43px, 6vw, 72px);
+  line-height: 1.05;
+  letter-spacing: -4px;
+  text-align: center;
+}
+
+.experience-header h2 span {
+  color: var(--exp-purple);
+}
+
+.experience-header > p {
+  width: min(100%, 560px);
+  margin: 16px auto 0;
+  padding: 0;
+  color: var(--exp-muted);
+  font-size: 14px;
+  line-height: 1.8;
+  text-align: center;
+}
+
+/* Experience type icon */
+
+.experience-type {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #a39aaa;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+
+/* Contribution heading icon */
+
+.responsibilities h5 {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin-bottom: 18px;
+  color: #a39aaa;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+/* Technology icons */
+
+.experience-tech span {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 13px;
+  border: 1px solid #e7def9;
+  border-radius: 30px;
+  background: #f7f3ff;
+  color: #6c5c84;
+  font-size: 11px;
+  transition:
+    background 0.25s ease,
+    color 0.25s ease,
+    transform 0.25s ease;
+}
+
+.experience-tech img {
+  width: 17px;
+  height: 17px;
+  object-fit: contain;
+}
+
+.experience-tech span:hover {
+  background: var(--exp-purple);
+  border-color: var(--exp-purple);
+  color: white;
+  transform: translateY(-3px);
+}
+
+/* Timeline marker animation */
+
+.timeline-marker {
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
+
+.experience-visible .timeline-marker {
+  animation: markerAppear 0.6s ease both;
+}
+
+@keyframes markerAppear {
+  from {
+    opacity: 0;
+    transform: scale(0.65);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+/* Experience card entrance */
+
+.experience-visible .experience-card {
+  transition-delay: 0.2s;
+}
+
+/* Responsive header */
+@media (max-width: 800px) {
+  .experience-section {
+    padding: 75px 18px 50px;
+  }
+
+  /* Section heading */
+  .experience-header {
+    margin-bottom: 35px;
+    text-align: center;
+  }
+
+  .experience-header h2 {
+    font-size: 39px;
+    line-height: 1.12;
+    letter-spacing: -2px;
+  }
+
+  .experience-header > p {
+    max-width: 320px;
+    margin: 13px auto 0;
+    font-size: 13px;
+    line-height: 1.7;
+  }
+
+  /* Timeline */
+  .experience-item {
+    grid-template-columns: 30px minmax(0, 1fr);
+    gap: 10px;
+    margin-bottom: 25px;
+  }
+
+  .timeline-line {
+    left: 14px;
+    top: 25px;
+    bottom: 20px;
+  }
+
+  .timeline-marker {
+    width: 30px;
+    height: 30px;
+    font-size: 9px;
+    box-shadow: 0 0 0 4px #f3efff;
+  }
+
+  /* Experience card */
+  .experience-card {
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .experience-card-top {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .experience-period {
+    padding: 7px 11px;
+    font-size: 9px;
+  }
+
+  .experience-type {
+    font-size: 9px;
+    letter-spacing: 0.5px;
+  }
+
+  /* Role and company */
+  .experience-main {
+    align-items: flex-start;
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .experience-role {
+    min-width: 0;
+  }
+
+  .experience-role h3 {
+    font-size: 23px;
+    line-height: 1.25;
+    letter-spacing: -0.8px;
+  }
+
+  .experience-role h4 {
+    max-width: 100%;
+    margin-top: 9px;
+    font-size: 12px;
+    line-height: 1.6;
+    overflow-wrap: anywhere;
+  }
+
+  .experience-arrow {
+    width: 34px;
+    height: 34px;
+    font-size: 17px;
+  }
+
+  /* Description */
+  .experience-description {
+    margin-top: 16px;
+    font-size: 12px;
+    line-height: 1.8;
+  }
+
+  /* Responsibilities */
+  .responsibilities {
+    margin-top: 22px;
+    padding-top: 20px;
+  }
+
+  .responsibilities h5 {
+    font-size: 9px;
+    letter-spacing: 1.5px;
+  }
+
+  .responsibilities ul {
+    gap: 12px;
+  }
+
+  .responsibilities li {
+    gap: 10px;
+    font-size: 12px;
+    line-height: 1.65;
+  }
+
+  /* Technology tags */
+  .experience-tech {
+    gap: 8px;
+    margin-top: 22px;
+  }
+
+  .experience-tech span {
+    padding: 8px 10px;
+    gap: 6px;
+    font-size: 10px;
+  }
+
+  .experience-tech img {
+    width: 15px;
+    height: 15px;
+  }
+
+  /* Bottom note */
+  .experience-note {
+    align-items: flex-start;
+    gap: 14px;
+    margin-top: 30px;
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .experience-note-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+  }
+
+  .experience-note h3 {
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  .experience-note p {
+    font-size: 11px;
+    line-height: 1.7;
   }
 }

@@ -717,3 +717,561 @@
   }
 
 }
+
+/* =========================================
+   ABOUT SECTION - VISUAL POLISH
+========================================= */
+
+/* Header spacing */
+.about-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 38px;
+}
+
+.about-header-description {
+  margin: 0 0 12px;
+}
+
+/* Card base animation */
+.about-card {
+  isolation: isolate;
+  border: 1px solid rgba(146, 114, 232, 0.16);
+  box-shadow:
+    0 10px 30px rgba(70, 45, 115, 0.055),
+    inset 0 1px 0 rgba(255, 255, 255, 0.8);
+  transition:
+    transform 0.45s cubic-bezier(.2,.8,.2,1),
+    box-shadow 0.45s ease,
+    border-color 0.35s ease;
+}
+
+/* Animated light sweep */
+.about-card::after {
+  content: "";
+  position: absolute;
+  z-index: 0;
+  top: -100%;
+  left: -60%;
+  width: 45%;
+  height: 300%;
+  pointer-events: none;
+  opacity: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255,255,255,0.38),
+    transparent
+  );
+  transform: rotate(25deg);
+  transition: left 0.8s ease, opacity 0.4s ease;
+}
+
+.about-card:hover::after {
+  left: 130%;
+  opacity: 1;
+}
+
+.about-card:hover {
+  transform: translateY(-9px) scale(1.012);
+  border-color: rgba(146, 114, 232, 0.38);
+  box-shadow:
+    0 24px 55px rgba(93, 66, 145, 0.13),
+    0 0 0 1px rgba(146, 114, 232, 0.05);
+}
+
+/* Intro card */
+.about-intro {
+  min-height: 270px;
+  padding: clamp(28px, 3.5vw, 46px);
+  justify-content: center;
+}
+
+.intro-label {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  border-radius: 30px;
+  background: #eee7ff;
+  color: #805bd8;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2.2px;
+  box-shadow: 0 5px 18px rgba(146, 114, 232, 0.12);
+  animation: introLabelPulse 3s ease-in-out infinite;
+}
+
+.about-intro h3 {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  font-size: clamp(34px, 4vw, 49px);
+  line-height: 1.12;
+  letter-spacing: -2.2px;
+  margin: 17px 0;
+}
+
+.about-intro p {
+  position: relative;
+  z-index: 1;
+  max-width: 680px;
+  padding: 0;
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.intro-decoration {
+  z-index: 0;
+  right: 25px;
+  bottom: -55px;
+  font-size: 230px;
+}
+
+.intro-orb {
+  position: absolute;
+  width: 170px;
+  height: 170px;
+  right: -65px;
+  top: -65px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(173, 144, 255, 0.16),
+    transparent 70%
+  );
+  pointer-events: none;
+  animation: introOrbFloat 6s ease-in-out infinite;
+}
+
+/* Experience card */
+.about-experience {
+  background: linear-gradient(145deg, #9272e8, #7654ce);
+}
+
+.experience-number {
+  text-shadow: 0 8px 25px rgba(48, 25, 100, 0.18);
+}
+
+/* Specialty card */
+.about-specialty {
+  background: linear-gradient(145deg, #eee7ff, #e3d6ff);
+}
+
+.specialty-icon {
+  display: inline-grid;
+  place-items: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 15px;
+  background: rgba(255,255,255,0.72);
+  box-shadow: 0 8px 20px rgba(117, 80, 190, 0.1);
+  animation: specialtyFloat 3s ease-in-out infinite;
+}
+
+/* Technology card */
+.about-tech {
+  background: linear-gradient(145deg, #fff, #faf7ff);
+}
+
+.tech-header h3 {
+  font-size: clamp(22px, 2.2vw, 27px);
+  letter-spacing: -0.8px;
+}
+
+.tech-list {
+  display: grid;
+  grid-template-columns: repeat(8, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 25px;
+}
+
+.tech-item {
+  position: relative;
+  display: grid;
+  place-items: center;
+  aspect-ratio: 1;
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #eee7fa;
+  border-radius: 17px;
+  background: #f8f5ff;
+  color: #7959c9;
+  cursor: pointer;
+  transition:
+    transform 0.3s ease,
+    background 0.3s ease,
+    box-shadow 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.tech-item:hover,
+.tech-item.active {
+  transform: translateY(-6px) scale(1.06);
+  background: #eee7ff;
+  border-color: #bda8f4;
+  box-shadow: 0 10px 22px rgba(146, 114, 232, 0.18);
+}
+
+.tech-logo {
+  display: block;
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+  transition: transform 0.3s ease;
+}
+
+.tech-item:hover .tech-logo,
+.tech-item.active .tech-logo {
+  transform: scale(1.13) rotate(-5deg);
+}
+
+.syncfusion-icon {
+  color: #7959c9;
+  width: 34px;
+  height: 34px;
+}
+
+.tech-footer {
+  margin-top: 22px;
+}
+
+.tech-footer strong {
+  font-size: 13px;
+}
+
+/* Personality card */
+.about-personality {
+  background: linear-gradient(145deg, #fff, #f7f2ff);
+}
+
+.personality-symbol {
+  animation: personalitySpin 18s linear infinite;
+}
+
+/* Entrance animation */
+.about-visible .about-card {
+  animation: cardEnter 0.75s both;
+}
+
+.about-visible .about-card:nth-child(1) { animation-delay: 0.08s; }
+.about-visible .about-card:nth-child(2) { animation-delay: 0.16s; }
+.about-visible .about-card:nth-child(3) { animation-delay: 0.24s; }
+.about-visible .about-card:nth-child(4) { animation-delay: 0.32s; }
+.about-visible .about-card:nth-child(5) { animation-delay: 0.40s; }
+.about-visible .about-card:nth-child(6) { animation-delay: 0.48s; }
+
+@keyframes cardEnter {
+  from {
+    opacity: 0;
+    transform: translateY(35px) scale(0.97);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes introLabelPulse {
+  0%, 100% { box-shadow: 0 5px 18px rgba(146,114,232,.12); }
+  50% { box-shadow: 0 5px 24px rgba(146,114,232,.28); }
+}
+
+@keyframes introOrbFloat {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(-18px, 15px); }
+}
+
+@keyframes specialtyFloat {
+  0%, 100% { transform: translateY(0) rotate(0); }
+  50% { transform: translateY(-6px) rotate(8deg); }
+}
+
+@keyframes personalitySpin {
+  from { transform: rotate(0); }
+  to { transform: rotate(360deg); }
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .about-header {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .about-header-description {
+    max-width: 420px;
+  }
+
+  .about-intro {
+    min-height: 300px;
+  }
+
+  .tech-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .about-header {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    margin-bottom: 28px;
+  }
+
+  .about-header-description {
+    margin: 0;
+  }
+
+  .about-intro {
+    min-height: auto;
+    padding: 26px 23px;
+  }
+
+  .intro-label {
+    font-size: 10px;
+    letter-spacing: 1.8px;
+    padding: 9px 12px;
+  }
+
+  .about-intro h3 {
+    font-size: clamp(30px, 8vw, 38px);
+    letter-spacing: -1.6px;
+    line-height: 1.15;
+    margin: 17px 0 14px;
+  }
+
+  .about-intro p {
+    font-size: 13px;
+    line-height: 1.8;
+  }
+
+  .tech-list {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 10px;
+  }
+
+  .tech-item {
+    padding: 10px;
+    border-radius: 15px;
+  }
+
+  .tech-logo,
+  .syncfusion-icon {
+    width: 30px;
+    height: 30px;
+  }
+
+  .about-card:hover {
+    transform: translateY(-3px);
+  }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+  .about-card,
+  .about-card::after,
+  .intro-label,
+  .intro-orb,
+  .specialty-icon,
+  .personality-symbol {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+/* =========================================
+   SMALL LAPTOP / LANDSCAPE TABLET
+   Optimized for 1024 x 599
+========================================= */
+
+@media (min-width: 901px) and (max-width: 1100px) {
+
+  .about-section {
+    padding: 75px 4% 45px;
+  }
+
+  .about-header {
+    margin-bottom: 28px;
+  }
+
+  .about-grid {
+    gap: 14px;
+    grid-template-rows: auto;
+  }
+
+  .about-card {
+    padding: 20px;
+    border-radius: 20px;
+  }
+
+  /* Technology icons: keep them inside the card */
+  .about-tech {
+    min-height: 230px;
+  }
+
+  .tech-header h3 {
+    font-size: 20px;
+    line-height: 1.25;
+    margin-top: 9px;
+  }
+
+  .tech-list {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 9px;
+    margin-top: 16px;
+  }
+
+  .tech-item {
+    width: 100%;
+    min-width: 0;
+    aspect-ratio: 1;
+    padding: 9px;
+    border-radius: 14px;
+  }
+
+  .tech-logo,
+  .syncfusion-icon {
+    width: 27px;
+    height: 27px;
+  }
+
+  .tech-footer {
+    margin-top: 15px;
+    padding-top: 10px;
+  }
+
+  .tech-footer span {
+    font-size: 8px;
+    letter-spacing: 1.2px;
+  }
+
+  /* Personality typography */
+  .about-personality {
+    min-height: 230px;
+    justify-content: center;
+    padding: 24px;
+  }
+
+  .about-personality h3 {
+    font-size: clamp(25px, 2.7vw, 31px);
+    line-height: 1.25;
+    letter-spacing: -1.3px;
+    margin: 16px 0 12px;
+    max-width: 100%;
+    overflow-wrap: normal;
+  }
+
+  .about-personality p {
+    max-width: 90%;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .personality-symbol {
+    right: 18px;
+    top: 18px;
+    transform: none;
+    font-size: 36px;
+  }
+
+  /* Make WHAT I DO readable */
+  .about-specialty .card-label {
+    display: inline-block;
+    font-size: 25px;
+    font-weight: 700;
+    letter-spacing: 2.2px;
+  }
+
+  .specialty-icon {
+    margin: 14px 0;
+  }
+}
+
+/* Extra protection for short landscape screens */
+@media (min-width: 901px) and (max-width: 1100px)
+  and (max-height: 650px) {
+
+  .about-section {
+    padding-top: 60px;
+    padding-bottom: 35px;
+  }
+
+  .about-header h2 {
+    font-size: 54px;
+    margin: 10px 0;
+  }
+
+  .about-grid {
+    grid-template-rows: auto;
+  }
+
+  .about-profile {
+    min-height: 480px;
+  }
+
+  .about-intro {
+    min-height: 230px;
+  }
+}
+
+/* About section — desktop header alignment */
+.about-header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-header .eyebrow {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-header h2 {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.about-header p {
+  text-align: center;
+  line-height: 1.7;
+}
+
+/* Make WHAT I DO label easier to read */
+.about-specialty .card-label {
+  display: inline-block;
+  font-size: 25px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  line-height: 1.4;
+}
+
+/* Keep the header balanced on smaller screens */
+@media (max-width: 600px) {
+  .about-header p {
+    max-width: 340px;
+    font-size: 14px;
+  }
+
+  .about-specialty .card-label {
+    font-size: 25px;
+  }
+}

@@ -1,0 +1,719 @@
+
+/* =========================================
+   ABOUT SECTION
+========================================= */
+
+.about-section {
+  --about-purple: #9272e8;
+  --about-dark: #292337;
+  --about-muted: #82798f;
+  --about-lavender: #eee7ff;
+
+  position: relative;
+  padding: 110px 7% 65px;
+  background: #f3efff;
+  color: var(--about-dark);
+  overflow: hidden;
+}
+
+/* BACKGROUND DECORATION */
+
+.about-section::before {
+  content: "";
+  position: absolute;
+  width: 450px;
+  height: 450px;
+  top: 15%;
+  right: -220px;
+  border-radius: 50%;
+  background: rgba(166, 134, 255, 0.09);
+  filter: blur(80px);
+  pointer-events: none;
+}
+
+/* HEADER */
+
+.about-header {
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-eyebrow,
+.card-label {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--about-purple);
+}
+
+.about-header h2 {
+  font-size: clamp(48px, 6vw, 76px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: -4px;
+  margin: 15px 0;
+}
+
+.about-header h2 span {
+  color: var(--about-purple);
+}
+
+.about-header-description {
+  font-size: 14px;
+  line-height: 1.8;
+  color: var(--about-muted);
+  padding-bottom: 5px;
+}
+
+/* BENTO GRID */
+
+.about-grid {
+  position: relative;
+  z-index: 1;
+
+  display: grid;
+  grid-template-columns: repeat(12, minmax(0, 1fr));
+  grid-template-rows: repeat(2, minmax(245px, auto));
+  gap: 18px;
+}
+
+/* COMMON CARD */
+
+.about-card {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+
+  padding: 27px;
+  border-radius: 24px;
+
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(146, 114, 232, 0.12);
+
+  box-shadow: 0 12px 35px rgba(93, 66, 145, 0.045);
+
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease,
+    border-color 0.4s ease;
+}
+
+.about-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(146, 114, 232, 0.35);
+  box-shadow: 0 20px 45px rgba(93, 66, 145, 0.1);
+}
+
+.about-card p {
+  color: var(--about-muted);
+  font-size: 13px;
+  line-height: 1.85;
+}
+
+/* =========================================
+   PROFILE CARD
+========================================= */
+
+.about-profile {
+  grid-column: span 4;
+  grid-row: span 2;
+
+  min-height: 510px;
+
+  display: flex;
+  flex-direction: column;
+
+  background: linear-gradient(
+    145deg,
+    #e6dcff,
+    #d4c2ff 55%,
+    #c9b2ff
+  );
+}
+
+.profile-top,
+.profile-details {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.profile-star {
+  font-size: 27px;
+  color: white;
+  animation: aboutSpin 15s linear infinite;
+}
+
+.profile-image-container {
+  position: relative;
+  flex: 1;
+  min-height: 280px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.profile-image {
+  position: relative;
+  z-index: 2;
+  border-radius: 5px;
+
+  width: 100%;
+  height: 310px;
+
+  object-fit: contain;
+  object-position: center bottom;
+
+  filter: drop-shadow(0 18px 20px rgba(74, 46, 121, 0.13));
+
+  transition: transform 0.5s ease;
+}
+
+.about-profile:hover .profile-image {
+  transform: translateY(-9px) scale(1.035);
+}
+
+.profile-orbit {
+  position: absolute;
+  width: 230px;
+  height: 230px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  animation: aboutSpin 25s linear infinite;
+}
+
+.profile-details {
+  position: relative;
+  z-index: 3;
+  margin-top: auto;
+  padding-top: 20px;
+}
+
+.profile-details h3 {
+  font-size: 25px;
+  letter-spacing: -1px;
+}
+
+.profile-details p {
+  color: #6f5c91;
+  margin-top: 5px;
+}
+
+.profile-arrow {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.6);
+  font-size: 20px;
+}
+
+/* =========================================
+   INTRO CARD
+========================================= */
+
+.about-intro {
+  grid-column: span 8;
+  grid-row: span 1;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  min-height: 245px;
+}
+
+.about-intro h3 {
+  font-size: clamp(27px, 3.2vw, 40px);
+  line-height: 1.15;
+  letter-spacing: -1.8px;
+  margin: 20px 0 14px;
+}
+
+.about-intro h3 span {
+  color: var(--about-purple);
+}
+
+.about-intro p {
+  padding: 0 15px;
+  margin: 0 auto;
+  white-space: pre-line;
+}
+
+.intro-decoration {
+  position: absolute;
+  right: 25px;
+  bottom: -65px;
+  font-family: Georgia, serif;
+  font-size: 210px;
+  line-height: 1;
+  color: rgba(146, 114, 232, 0.07);
+  pointer-events: none;
+}
+
+/* =========================================
+   EXPERIENCE CARD
+========================================= */
+
+.about-experience {
+  grid-column: span 4;
+
+  background: #9272e8;
+  color: white;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.about-experience .card-label,
+.about-experience p {
+  color: rgba(255,255,255,0.78);
+}
+
+.experience-number {
+  font-size: clamp(55px, 7vw, 80px);
+  font-weight: 700;
+  letter-spacing: -5px;
+  line-height: 1;
+}
+
+.experience-number span {
+  font-size: 35px;
+  color: #d9caff;
+}
+
+.about-experience h4 {
+  font-size: 16px;
+  margin: 12px 0 7px;
+}
+
+.about-experience p {
+  font-size: 12px;
+}
+
+.experience-line {
+  width: 100%;
+  height: 3px;
+  margin-top: 20px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.2);
+  overflow: hidden;
+}
+
+.experience-line span {
+  display: block;
+  height: 100%;
+  width: 75%;
+  background: white;
+  border-radius: inherit;
+  animation: experienceGrow 1.5s ease forwards;
+}
+
+/* =========================================
+   SPECIALIZATION CARD
+========================================= */
+
+.about-specialty {
+  grid-column: span 4;
+  min-height: 220px;
+  background: #e8dfff;
+}
+
+.specialty-icon {
+  font-size: 30px;
+  color: var(--about-purple);
+  margin: 18px 0;
+}
+
+.about-specialty h3 {
+  font-size: 21px;
+  letter-spacing: -0.8px;
+  margin-bottom: 10px;
+}
+
+.specialty-decoration {
+  position: absolute;
+  right: 20px;
+  bottom: 5px;
+  font-size: 80px;
+  color: rgba(146, 114, 232, 0.13);
+}
+
+/* =========================================
+   TECHNOLOGY CARD
+========================================= */
+
+.about-tech {
+  grid-column: span 6;
+  min-height: 220px;
+}
+
+.tech-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+}
+
+.tech-header h3 {
+  font-size: 22px;
+  margin-top: 12px;
+}
+
+.tech-sparkle {
+  font-size: 32px;
+  color: var(--about-purple);
+}
+
+.tech-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 23px;
+}
+
+.tech-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+
+  border: 1px solid #e7def9;
+  border-radius: 30px;
+
+  background: #f7f3ff;
+  color: #625574;
+
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+
+  transition: all 0.25s ease;
+}
+
+.tech-item:hover,
+.tech-item.active {
+  background: #9272e8;
+  color: white;
+  border-color: #9272e8;
+  transform: translateY(-3px);
+}
+
+.tech-dot {
+  width: 6px;
+  height: 6px;
+  background: currentColor;
+  border-radius: 50%;
+}
+
+.tech-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 23px;
+  padding-top: 14px;
+  border-top: 1px solid #eee8f8;
+}
+
+.tech-footer span {
+  color: #92889f;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.tech-footer strong {
+  color: var(--about-purple);
+  font-size: 12px;
+}
+
+/* =========================================
+   PERSONALITY CARD
+========================================= */
+
+.about-personality {
+  grid-column: span 6;
+  min-height: 190px;
+
+  background: #ffffff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.about-personality h3 {
+  font-size: clamp(27px, 4vw, 43px);
+  margin: 15px 0;
+  letter-spacing: -1.8px;
+}
+
+.about-personality h3 span {
+  color: var(--about-purple);
+}
+
+/* .about-personality p {
+  max-width: 550px;
+} */
+
+.personality-symbol {
+  position: absolute;
+  right: 7%;
+  top: 15%;
+  transform: translateY(-50%);
+  font-size: 50px;
+  color: #e9e0ff;
+}
+
+/* =========================================
+   FOOTER
+========================================= */
+
+.about-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+
+  margin-top: 35px;
+
+  color: #92889f;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.about-footer a {
+  color: var(--about-purple);
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+.about-footer a:hover {
+  transform: translateX(5px);
+}
+
+/* =========================================
+   SCROLL REVEAL
+========================================= */
+
+.about-header,
+.about-card,
+.about-footer {
+  opacity: 0;
+  transform: translateY(25px);
+
+  transition:
+    opacity 0.7s ease,
+    transform 0.7s ease;
+}
+
+.about-visible .about-header,
+.about-visible .about-card,
+.about-visible .about-footer {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.about-visible .about-card:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.about-visible .about-card:nth-child(2) {
+  transition-delay: 0.2s;
+}
+
+.about-visible .about-card:nth-child(3) {
+  transition-delay: 0.3s;
+}
+
+.about-visible .about-card:nth-child(4) {
+  transition-delay: 0.4s;
+}
+
+.about-visible .about-card:nth-child(5) {
+  transition-delay: 0.5s;
+}
+
+.about-visible .about-card:nth-child(6) {
+  transition-delay: 0.6s;
+}
+
+.about-visible .about-footer {
+  transition-delay: 0.7s;
+}
+
+/* =========================================
+   KEYFRAMES
+========================================= */
+
+@keyframes aboutSpin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes experienceGrow {
+  from { width: 0; }
+  to { width: 75%; }
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 900px) {
+
+  .about-section {
+    padding: 85px 5%;
+  }
+
+  .about-grid {
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    grid-template-rows: auto;
+  }
+
+  .about-profile {
+    grid-column: span 3;
+    grid-row: span 2;
+  }
+
+  .about-intro {
+    grid-column: span 3;
+  }
+
+  .about-experience {
+    grid-column: span 3;
+  }
+
+  .about-specialty {
+    grid-column: span 3;
+  }
+
+  .about-tech {
+    grid-column: span 6;
+  }
+
+  .about-personality {
+    grid-column: span 6;
+  }
+
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 600px) {
+
+  .about-section {
+    padding: 75px 18px 45px;
+  }
+
+  .about-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 18px;
+    margin-bottom: 35px;
+  }
+
+  .about-header h2 {
+    font-size: 52px;
+    letter-spacing: -3px;
+  }
+
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .about-card {
+    grid-column: 1 / -1 !important;
+    grid-row: auto !important;
+    padding: 23px;
+    border-radius: 20px;
+  }
+
+  .about-profile {
+    min-height: 420px;
+  }
+
+  .profile-image-container {
+    min-height: 260px;
+  }
+
+  .profile-image {
+    height: 275px;
+  }
+
+  .profile-orbit {
+    width: 200px;
+    height: 200px;
+  }
+
+  .about-intro {
+    min-height: 280px;
+  }
+
+  .about-intro h3 {
+    font-size: 32px;
+  }
+
+  .about-experience {
+    min-height: 220px;
+  }
+
+  .experience-number {
+    font-size: 65px;
+  }
+
+  .about-specialty {
+    min-height: 220px;
+  }
+
+  .about-tech {
+    min-height: 250px;
+  }
+
+  .tech-header h3 {
+    font-size: 20px;
+  }
+
+  .tech-item {
+    font-size: 11px;
+    padding: 9px 11px;
+  }
+
+  .about-personality {
+    min-height: 220px;
+  }
+
+  .personality-symbol {
+    right: 15px;
+    top: 25px;
+    transform: none;
+    font-size: 55px;
+  }
+
+  .about-footer {
+    flex-direction: column;
+    align-items: flex-start;
+    line-height: 2;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .about-section *,
+  .about-section *::before,
+  .about-section *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+}

@@ -1,0 +1,151 @@
+
+.contact-section {
+  padding: 100px 7% 35px;
+  background: #f0eaff;
+  color: #29233c;
+}
+
+.contact-container {
+  /* max-width: 1100px; */
+  margin: auto;
+}
+
+.contact-card {
+  padding: 65px;
+  border: 1px solid rgba(133, 104, 196, 0.15);
+  border-radius: 30px;
+  background: #fbfaff;
+  box-shadow: 0 20px 50px rgba(67, 48, 107, 0.07);
+}
+
+.contact-card h2 {
+  margin: 15px 0;
+  font-size: clamp(45px, 7vw, 78px);
+  line-height: 1.05;
+  letter-spacing: -3px;
+}
+
+.contact-card h2 span {
+  color: #9476dc;
+}
+
+.contact-card > p {
+  margin: 20px 0 30px;
+  color: #81798f;
+  font-size: 14px;
+  line-height: 1.9;
+}
+
+.contact-email {
+  display: inline-flex;
+  align-items: center;
+  gap: 30px;
+  padding: 15px 23px;
+  border-radius: 12px;
+  background: #8d70d1;
+  color: white;
+  font-size: 13px;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.contact-email:hover {
+  transform: translateY(-4px);
+  background: #7657bd;
+}
+
+.contact-arrow {
+  font-size: 19px;
+}
+
+.contact-divider {
+  height: 1px;
+  margin: 55px 0 30px;
+  background: #e9e2f3;
+}
+
+.contact-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 25px;
+}
+
+.contact-bottom > div:first-child {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+
+.contact-small-label {
+  color: #a197b2;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.contact-bottom a {
+  color: #514765;
+  font-size: 12px;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.contact-bottom a:hover {
+  color: #8d70d1;
+}
+
+.contact-socials {
+  display: flex;
+  gap: 22px;
+}
+
+.portfolio-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  padding: 30px 0 0;
+  color: #9186a6;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1.2px;
+}
+
+.portfolio-footer a {
+  color: #8065b8;
+  text-decoration: none;
+}
+
+@media (max-width: 650px) {
+  .contact-section {
+    padding: 70px 5% 25px;
+  }
+
+  .contact-card {
+    padding: 30px 22px;
+    border-radius: 22px;
+  }
+
+  .contact-card h2 {
+    letter-spacing: -2px;
+  }
+
+  .contact-divider {
+    margin: 35px 0 25px;
+  }
+
+  .contact-bottom {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .contact-socials {
+    flex-wrap: wrap;
+  }
+
+  .portfolio-footer {
+    flex-direction: column;
+    line-height: 1.8;
+  }
+}

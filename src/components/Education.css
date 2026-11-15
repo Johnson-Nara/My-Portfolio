@@ -1,0 +1,166 @@
+
+.education-section {
+  padding: 110px 7%;
+  background: #fbfaff;
+  color: #29233c;
+}
+
+.education-container {
+  /* max-width: 1100px; */
+  margin: auto;
+}
+
+.education-heading {
+  margin-bottom: 45px;
+}
+
+.education-heading h2 {
+  margin: 0;
+  font-size: clamp(38px, 5vw, 62px);
+  line-height: 1.08;
+  letter-spacing: -2px;
+}
+
+.education-heading h2 span {
+  color: #9476dc;
+}
+
+.education-heading p {
+  margin-top: 20px;
+  color: #81798f;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.education-card {
+  display: flex;
+  align-items: center;
+  gap: 25px;
+  padding: 35px;
+  border: 1px solid #e9e2f6;
+  border-radius: 24px;
+  background: white;
+  box-shadow: 0 15px 40px rgba(67, 48, 107, 0.05);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.education-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 22px 45px rgba(67, 48, 107, 0.10);
+}
+
+.education-icon {
+  display: grid;
+  flex-shrink: 0;
+  width: 65px;
+  height: 65px;
+  place-items: center;
+  border-radius: 19px;
+  background: #f0eaff;
+  color: #8c6bd1;
+  font-size: 28px;
+}
+
+.education-details {
+  flex: 1;
+}
+
+.education-label {
+  color: #9678dc;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+.education-details h3 {
+  margin: 10px 0 7px;
+  color: #342d45;
+  font-size: 23px;
+}
+
+.education-details h4 {
+  margin: 0;
+  color: #746b85;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.education-details p {
+  margin: 10px 0 0;
+  color: #a19aaa;
+  font-size: 12px;
+}
+
+.education-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100px;
+  height: 100px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  background: #f3eeff;
+  color: #8465c7;
+}
+
+.education-score strong {
+  font-size: 28px;
+}
+
+.education-score span {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.education-note {
+  display: flex;
+  justify-content: space-between;
+  gap: 15px;
+  margin-top: 35px;
+  color: #a69bb9;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+}
+
+@media (max-width: 600px) {
+  .education-section {
+    padding: 75px 5%;
+  }
+
+  .education-card {
+    flex-wrap: wrap;
+    padding: 23px;
+    gap: 17px;
+  }
+
+  .education-icon {
+    width: 52px;
+    height: 52px;
+  }
+
+  .education-details {
+    flex-basis: calc(100% - 75px);
+  }
+
+  .education-details h3 {
+    font-size: 18px;
+  }
+
+  .education-score {
+    width: 75px;
+    height: 75px;
+    margin-left: auto;
+  }
+
+  .education-score strong {
+    font-size: 22px;
+  }
+
+  .education-note {
+    flex-wrap: wrap;
+    font-size: 9px;
+  }
+}
